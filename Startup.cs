@@ -5,9 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using TodoApi.Models;
+using VoyagesApi.Models;
+using VoyagesApi.Utils;
+using VoyagesApi.Services;
 
-namespace TodoApi
+namespace VoyagesApi
 {
     public class Startup
     {
@@ -21,6 +23,8 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
+            
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -29,7 +33,9 @@ namespace TodoApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
 
-            services.AddDbContext<TodoContext>(options => options.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<VoyagesContext>(options => options.UseInMemoryDatabase("VoyagesList"));
+            services.AddScoped<IVoyagesService, VoyagesService>();
+            services.AddScoped<ICurrencyUtils, CurrencyUtils>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
