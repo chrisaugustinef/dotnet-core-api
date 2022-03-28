@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/dotnet-core-api-tests/dotnet-core-api-tests.csproj",
+                "${workspaceFolder}/dotnet-core-api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/dotnet-core-api-tests/dotnet-core-api-tests.csproj",
+                "${workspaceFolder}/dotnet-core-api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/dotnet-core-api-tests/dotnet-core-api-tests.csproj"
+                "${workspaceFolder}/dotnet-core-api.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
